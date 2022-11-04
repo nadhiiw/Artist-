@@ -29,7 +29,7 @@ public class ArtistManager {
     public void update(){
         System.out.println("Here is your playlist");
         print();
-        System.out.println("Which song yuo want to update?");
+        System.out.println("Which song you want to update?");
         Integer songUpdate = Integer.parseInt(scan.nextLine());
         artists.get(songUpdate);
 
@@ -42,6 +42,15 @@ public class ArtistManager {
 
         Artist updateSong = new Artist(name,song,year);
         artists.put(songUpdate,updateSong);
+        print();
+    }
+
+    public void remove(){
+        System.out.println("Here is your playlist");
+        print();
+        System.out.println("Which song you want to delete?");
+        Integer delete = Integer.parseInt(scan.nextLine());
+        artists.remove(delete);
         print();
     }
 
