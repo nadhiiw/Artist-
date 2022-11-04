@@ -21,4 +21,10 @@ public class ArtistManager {
         Artist songs = new Artist(name,song,year);
         artists.put(id,songs);
     }
+
+    public void print(){
+        for (Integer key:artists.keySet()) {
+            System.out.println("Id is: " + key +" " + artists.keySet());
+        }
+    }
 }
