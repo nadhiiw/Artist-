@@ -20,6 +20,11 @@ public class ArtistManager {
 
         Artist songs = new Artist(name,song,year);
         artists.put(id,songs);
+        print();
+    }
+
+    public void read(){
+        print();
     }
 
     public void print(){
