@@ -26,6 +26,24 @@ public class ArtistManager {
     public void read(){
         print();
     }
+    public void update(){
+        System.out.println("Here is your playlist");
+        print();
+        System.out.println("Which song yuo want to update?");
+        Integer songUpdate = Integer.parseInt(scan.nextLine());
+        artists.get(songUpdate);
+
+        System.out.println("What is the name of the new artist?");
+        String name = scan.nextLine();
+        System.out.println("What your new favorite song?");
+        String song = scan.nextLine();
+        System.out.println("What year did song came out?");
+        Integer year = Integer.parseInt(scan.nextLine());
+
+        Artist updateSong = new Artist(name,song,year);
+        artists.put(songUpdate,updateSong);
+        print();
+    }
 
     public void print(){
         for (Integer key:artists.keySet()) {
