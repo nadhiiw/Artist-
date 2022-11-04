@@ -1,4 +1,6 @@
-public abstract class Artist {
+
+import java.io.*;
+public class Artist implements java.io.Serializable {
         private String name;
 
         private String song;
