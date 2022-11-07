@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class ArtistManager {
+
         HashMap<Integer,Artist> artists;
         Scanner scan = new Scanner(System.in);
     public ArtistManager() {
@@ -24,17 +25,20 @@ public class ArtistManager {
 
         Artist songs = new Artist(name,song,year);
         artists.put(id,songs);
-        print();
-        serializeArtist(artists);
+//        print();
+        serializeArtist();
         deserializeArtist();
     }
 
     public void read(){
-        print();
+        System.out.println("Here are your playlist");
+        deserializeArtist();
+//        print();
     }
     public void update(){
         System.out.println("Here is your playlist");
-        print();
+//        print();
+        deserializeArtist();
         System.out.println("Which song you want to update?");
         Integer songUpdate = Integer.parseInt(scan.nextLine());
         artists.get(songUpdate);
@@ -48,31 +52,36 @@ public class ArtistManager {
 
         Artist updateSong = new Artist(name,song,year);
         artists.put(songUpdate,updateSong);
-        print();
+//        print();
+        serializeArtist();
+        deserializeArtist();
     }
 
     public void remove(){
         System.out.println("Here is your playlist");
-        print();
+//        print();
+        deserializeArtist();
         System.out.println("Which song you want to delete?");
         Integer delete = Integer.parseInt(scan.nextLine());
         artists.remove(delete);
-        print();
+//        print();
+        serializeArtist();
+        deserializeArtist();
     }
 
-    public static void serializeArtist(HashMap<Integer,Artist> artist){
+    public void serializeArtist(){
         try{
-            FileOutputStream fileOut = new FileOutputStream("employees.ser");
+            FileOutputStream fileOut = new FileOutputStream("artist.ser");
             // ^ opening a connect to a new file and allowing to connect
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             // ^ streaming data from an object into a file
-            out.writeObject(artist);
+            out.writeObject(artists);
             // take this object and i'm lobbing it
             out.close();
             // close it once we are done with the file
             fileOut.close();
             // close it once we are done with the file
-            System.out.println("Serialized data is saved!");
+//            System.out.println("Serialized data is saved!");
 
 
         }catch (IOException i) {
@@ -83,7 +92,7 @@ public class ArtistManager {
 
     }
 
-    public static void deserializeArtist() {
+    public void deserializeArtist() {
 // we need to read from the file object.ser the data for our employee
 // and if possible create a new employee otherwise return null
 
@@ -91,7 +100,7 @@ public class ArtistManager {
 
         try {
             // read object from a file
-            FileInputStream file = new FileInputStream("employees.ser");
+            FileInputStream file = new FileInputStream("artist.ser");
             // create a connect to a file
             ObjectInputStream in = new ObjectInputStream(file);
 
@@ -102,8 +111,8 @@ public class ArtistManager {
             in.close();
             file.close();
 
-            System.out.println("Object has been deserialized");
-            System.out.println(artist.size());
+//            System.out.println("Object has been deserialized");
+            System.out.println(artist);;
 
         } catch (IOException i) {
             i.printStackTrace();
@@ -112,9 +121,9 @@ public class ArtistManager {
             c.printStackTrace();
         }
     }
-    public void print(){
-        for (Integer key:artists.keySet()) {
-            System.out.println("Id is: " + key +" " + artists.get(key));
-        }
-    }
+//    public void print(){
+//        for (Integer key:artists.keySet()) {
+//            System.out.println("Id is: " + key +" " + artists.get(key));
+//        }
+//    }
 }

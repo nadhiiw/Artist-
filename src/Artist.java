@@ -39,11 +39,11 @@ public class Artist implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "Artist{" +
-                "name='" + name + '\'' +
-                ", song='" + song + '\'' +
-                ", year=" + year +
-                '}';
+        return " Playlist: " +
+                "Artist name: '" + name + " 🎷 "+'\'' +
+                " your favorite song: '" + song + " 🎶 " +'\'' +
+                " year came out: " + year +
+                " 🎵\n";
     }
 }
 
