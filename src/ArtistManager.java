@@ -25,7 +25,6 @@ public class ArtistManager {
 
         Artist songs = new Artist(name,song,year);
         artists.put(id,songs);
-//        print();
         serializeArtist();
         deserializeArtist();
     }
@@ -33,11 +32,9 @@ public class ArtistManager {
     public void read(){
         System.out.println("Here are your playlist");
         deserializeArtist();
-//        print();
     }
     public void update(){
         System.out.println("Here is your playlist");
-//        print();
         deserializeArtist();
         System.out.println("Which song you want to update?");
         Integer songUpdate = Integer.parseInt(scan.nextLine());
@@ -52,19 +49,16 @@ public class ArtistManager {
 
         Artist updateSong = new Artist(name,song,year);
         artists.put(songUpdate,updateSong);
-//        print();
         serializeArtist();
         deserializeArtist();
     }
 
     public void remove(){
         System.out.println("Here is your playlist");
-//        print();
         deserializeArtist();
         System.out.println("Which song you want to delete?");
         Integer delete = Integer.parseInt(scan.nextLine());
         artists.remove(delete);
-//        print();
         serializeArtist();
         deserializeArtist();
     }
@@ -72,16 +66,17 @@ public class ArtistManager {
     public void serializeArtist(){
         try{
             FileOutputStream fileOut = new FileOutputStream("artist.ser");
-            // ^ opening a connect to a new file and allowing to connect
+            // ^ opening connect to a new file and allowing to connect
+
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             // ^ streaming data from an object into a file
             out.writeObject(artists);
-            // take this object and i'm lobbing it
+            // take this object
+
             out.close();
             // close it once we are done with the file
             fileOut.close();
             // close it once we are done with the file
-//            System.out.println("Serialized data is saved!");
 
 
         }catch (IOException i) {
@@ -93,26 +88,23 @@ public class ArtistManager {
     }
 
     public void deserializeArtist() {
-// we need to read from the file object.ser the data for our employee
-// and if possible create a new employee otherwise return null
-
-        HashMap<Integer,Artist> artist = new HashMap<Integer,Artist>(); // this create an object of type employee to receive data from file or return
 
         try {
             // read object from a file
             FileInputStream file = new FileInputStream("artist.ser");
-            // create a connect to a file
+
+            // create connect to a file
             ObjectInputStream in = new ObjectInputStream(file);
 
             // method for deserialization for an object
-            artist = (HashMap<Integer, Artist>) in.readObject();
-            // ^ read object and convert data to type Employee
+            artists = (HashMap<Integer, Artist>) in.readObject();
+            // ^ read object and convert data to type artist
 
             in.close();
             file.close();
 
 //            System.out.println("Object has been deserialized");
-            System.out.println(artist);;
+            System.out.println(artists);;
 
         } catch (IOException i) {
             i.printStackTrace();

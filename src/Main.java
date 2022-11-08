@@ -21,7 +21,7 @@ public static void present(){
     } else if (option.equalsIgnoreCase("D")) {
         artists.remove();
     } else if (option.equalsIgnoreCase("Q")) {
-        System.out.println("Would you like to save");
+        System.out.println("Would you like to save? Yes or No ");
         String save = scan.nextLine();
         if(save.equalsIgnoreCase("yes")){
             artists.serializeArtist();
@@ -35,7 +35,7 @@ public static void present(){
         System.out.println("Welcome to Oromo Music");
 //        ArtistManager artists = new ArtistManager();
 //        Scanner scan = new Scanner(System.in);
-        System.out.println("Would you like the load");
+        System.out.println("Would you like the load? Yes or No");
         String load = scan.nextLine();
         if(load.equalsIgnoreCase("Yes")){
             artists.deserializeArtist();
