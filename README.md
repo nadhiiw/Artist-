@@ -1,2 +1,2 @@
 # Artist-
-Use CRUD to create method for the sterilization and deserialize
+challenge is focused on adding Object Serialization to our OOP projects and utilizing git.
