@@ -6,14 +6,15 @@ import java.util.Scanner;
 
 public class ArtistManager {
 
-        HashMap<Integer,Artist> artists;
-        Scanner scan = new Scanner(System.in);
+    HashMap<Integer, Artist> artists;
+    Scanner scan = new Scanner(System.in);
+
     public ArtistManager() {
-        this.artists = new HashMap<Integer,Artist>();
+        this.artists = new HashMap<Integer, Artist>();
     }
 
-//
-    public void create(){
+    //
+    public void create() {
         System.out.println("What is the name of the artist?");
         String name = scan.nextLine();
         System.out.println("What your favorite song?");
@@ -23,17 +24,18 @@ public class ArtistManager {
         System.out.println("What is the id?");
         Integer id = Integer.parseInt(scan.nextLine());
 
-        Artist songs = new Artist(name,song,year);
-        artists.put(id,songs);
+        Artist songs = new Artist(name, song, year);
+        artists.put(id, songs);
         serializeArtist();
         deserializeArtist();
     }
 
-    public void read(){
+    public void read() {
         System.out.println("Here are your playlist");
         deserializeArtist();
     }
-    public void update(){
+
+    public void update() {
         System.out.println("Here is your playlist");
         deserializeArtist();
         System.out.println("Which song you want to update?");
@@ -47,13 +49,13 @@ public class ArtistManager {
         System.out.println("What year did song came out?");
         Integer year = Integer.parseInt(scan.nextLine());
 
-        Artist updateSong = new Artist(name,song,year);
-        artists.put(songUpdate,updateSong);
+        Artist updateSong = new Artist(name, song, year);
+        artists.put(songUpdate, updateSong);
         serializeArtist();
         deserializeArtist();
     }
 
-    public void remove(){
+    public void remove() {
         System.out.println("Here is your playlist");
         deserializeArtist();
         System.out.println("Which song you want to delete?");
@@ -63,8 +65,8 @@ public class ArtistManager {
         deserializeArtist();
     }
 
-    public void serializeArtist(){
-        try{
+    public void serializeArtist() {
+        try {
             FileOutputStream fileOut = new FileOutputStream("artist.ser");
             // ^ opening connect to a new file and allowing to connect
 
@@ -79,7 +81,7 @@ public class ArtistManager {
             // close it once we are done with the file
 
 
-        }catch (IOException i) {
+        } catch (IOException i) {
             i.printStackTrace();
             // history of all the methods that were called - allows us to see where the code went wrong.
             //principle of a stack is similar to pringles - last in, first out
@@ -104,7 +106,8 @@ public class ArtistManager {
             file.close();
 
 //            System.out.println("Object has been deserialized");
-            System.out.println(artists);;
+            System.out.println(artists);
+            ;
 
         } catch (IOException i) {
             i.printStackTrace();
@@ -113,9 +116,4 @@ public class ArtistManager {
             c.printStackTrace();
         }
     }
-//    public void print(){
-//        for (Integer key:artists.keySet()) {
-//            System.out.println("Id is: " + key +" " + artists.get(key));
-//        }
-//    }
 }
