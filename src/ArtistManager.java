@@ -67,18 +67,20 @@ public class ArtistManager {
 
     public void serializeArtist() {
         try {
+
+            //saving the object in the file
             FileOutputStream fileOut = new FileOutputStream("artist.ser");
-            // ^ opening connect to a new file and allowing to connect
-
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            // ^ streaming data from an object into a file
-            out.writeObject(artists);
-            // take this object
 
+            //method of the object in to serialize
+            // take in the object of the artist
+            out.writeObject(artists);
+
+            // close it once we are done with the file
             out.close();
+
             // close it once we are done with the file
             fileOut.close();
-            // close it once we are done with the file
 
 
         } catch (IOException i) {
